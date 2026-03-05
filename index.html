@@ -953,6 +953,175 @@
   .d1 { transition-delay: 0.12s; }
   .d2 { transition-delay: 0.24s; }
   .d3 { transition-delay: 0.36s; }
+
+  /* ─── MOBILE ──────────────────────────────────────── */
+  @media (max-width: 768px) {
+
+    /* Nav */
+    nav {
+      padding: 1.4rem 5vw;
+    }
+    .nav-links {
+      display: none;
+    }
+
+    /* Hero */
+    .hero-title {
+      font-size: clamp(3rem, 13vw, 5rem);
+      line-height: 1;
+    }
+    .hero-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .hero-sub {
+      font-size: 0.95rem;
+      max-width: 100%;
+    }
+    .hero-cta-wrap {
+      align-items: flex-start;
+      width: 100%;
+    }
+    .btn-hero {
+      width: 100%;
+      justify-content: center;
+      font-size: 0.6rem;
+    }
+
+    /* What Is It */
+    .what {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 10vh 6vw;
+    }
+    .what-title {
+      font-size: clamp(2.4rem, 10vw, 3.5rem);
+    }
+    .what-body {
+      font-size: 0.95rem;
+    }
+
+    /* Cinema strips */
+    .cinema-strip-duo {
+      grid-template-columns: 1fr !important;
+      height: auto !important;
+    }
+    .cinema-strip-duo > div {
+      height: 50vw;
+      min-height: 220px;
+    }
+
+    /* Experience */
+    .exp-header {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .exp-section-title {
+      font-size: clamp(2.2rem, 9vw, 3.2rem);
+    }
+    .exp-features {
+      grid-template-columns: 1fr;
+    }
+    .exp-feat {
+      padding: 2.5rem 1.8rem;
+    }
+    .feat-desc {
+      font-size: 0.9rem;
+      max-width: 100%;
+    }
+
+    /* For Who */
+    .for-who {
+      grid-template-columns: 1fr;
+      padding: 8vh 6vw;
+    }
+    .for-card {
+      padding: 5vh 6vw;
+    }
+    .for-title {
+      font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+    .for-body {
+      font-size: 0.95rem;
+      max-width: 100%;
+    }
+
+    /* Deliverables */
+    .del-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .del-desc {
+      font-size: 0.9rem;
+    }
+
+    /* Pricing — stack vertically */
+    .pricing[id="investment"] {
+      grid-template-columns: 1fr !important;
+    }
+    .pricing[id="investment"] > div:last-child {
+      height: 60vw;
+      min-height: 280px;
+    }
+    .pricing-title {
+      font-size: clamp(2.4rem, 9vw, 3.5rem) !important;
+    }
+    .pricing-body {
+      font-size: 0.95rem;
+    }
+
+    /* Testimonials */
+    .test-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .test-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .test-section-title {
+      font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+
+    /* Final CTA */
+    .final-title {
+      font-size: clamp(2.8rem, 11vw, 5rem);
+    }
+    .final-sub {
+      font-size: 0.95rem;
+    }
+    .final-btn {
+      width: 100%;
+      justify-content: center;
+      max-width: 340px;
+    }
+
+    /* Footer */
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    /* Cinematic strip text */
+    .cinema-strip div[style*="bottom:3rem"] {
+      bottom: 1.5rem !important;
+      font-size: 0.85rem !important;
+    }
+    .cinema-strip div[style*="bottom:5rem"] {
+      bottom: 2rem !important;
+    }
+    .cinema-strip div[style*="clamp(2rem"] {
+      font-size: clamp(1.6rem, 7vw, 2.5rem) !important;
+    }
+  }
 </style>
 </head>
 <body>
@@ -966,7 +1135,23 @@
     <li><a href="#investment">Investment</a></li>
     <li><a href="#contact" class="nav-inquire">Inquire</a></li>
   </ul>
+  <!-- Mobile menu button -->
+  <button id="menuBtn" onclick="toggleMenu()" style="display:none;background:none;border:none;cursor:pointer;padding:4px;z-index:400;">
+    <svg id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <line x1="3" y1="6" x2="21" y2="6" stroke="white" stroke-width="1.5"/>
+      <line x1="3" y1="12" x2="21" y2="12" stroke="white" stroke-width="1.5"/>
+      <line x1="3" y1="18" x2="21" y2="18" stroke="white" stroke-width="1.5"/>
+    </svg>
+  </button>
 </nav>
+
+<!-- Mobile dropdown menu -->
+<div id="mobileMenu" style="display:none;position:fixed;inset:0;background:rgba(30,27,24,0.97);z-index:350;flex-direction:column;align-items:center;justify-content:center;gap:3rem;">
+  <a href="#experience" onclick="toggleMenu()" style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#fff;text-decoration:none;letter-spacing:0.05em;">The Experience</a>
+  <a href="#events" onclick="toggleMenu()" style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#fff;text-decoration:none;letter-spacing:0.05em;">Events</a>
+  <a href="#investment" onclick="toggleMenu()" style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#fff;text-decoration:none;letter-spacing:0.05em;">Investment</a>
+  <a href="#contact" onclick="toggleMenu()" style="font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:300;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:1rem 3rem;text-decoration:none;margin-top:1rem;">Inquire</a>
+</div>
 
 <!-- ═══ HERO ═══════════════════════════════════════ -->
 <section class="hero">
@@ -1290,6 +1475,25 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  // Mobile menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('menuBtn');
+    const isOpen = menu.style.display === 'flex';
+    menu.style.display = isOpen ? 'none' : 'flex';
+    btn.innerHTML = isOpen
+      ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6" stroke="white" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="white" stroke-width="1.5"/><line x1="3" y1="18" x2="21" y2="18" stroke="white" stroke-width="1.5"/></svg>`
+      : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><line x1="4" y1="4" x2="20" y2="20" stroke="white" stroke-width="1.5"/><line x1="20" y1="4" x2="4" y2="20" stroke="white" stroke-width="1.5"/></svg>`;
+  }
+
+  // Show hamburger on mobile
+  function checkMobile() {
+    const btn = document.getElementById('menuBtn');
+    btn.style.display = window.innerWidth <= 768 ? 'block' : 'none';
+  }
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
 
   // Subtle parallax on cinema strip images
   const pImgs = document.querySelectorAll('.parallax-img');
