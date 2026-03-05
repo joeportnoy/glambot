@@ -6,7 +6,6 @@
 <title>Glam Bot — The Cinematic Event Experience</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Jost:wght@100;200;300;400&display=swap" rel="stylesheet">
-  <script src="https://player.vimeo.com/api/player.js"></script>
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -129,7 +128,8 @@
     z-index: 0;
   }
   /* 16:9 math + 30px nudge on each axis to eliminate black bars */
-  .hero-vimeo-wrap iframe {
+  .hero-vimeo-wrap iframe,
+  .hero-vimeo-wrap video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -140,6 +140,7 @@
     min-width: calc(177.78vh + 60px);
     border: none;
     pointer-events: none;
+    object-fit: cover;
   }
 
   /* Cinematic overlay — warm dark vignette */
@@ -966,14 +967,11 @@
 <!-- ═══ HERO ═══════════════════════════════════════ -->
 <section class="hero">
 
-  <!-- Vimeo full-bleed background -->
+  <!-- MP4 full-bleed background -->
   <div class="hero-vimeo-wrap">
-    <iframe
-      src="https://player.vimeo.com/video/1169183138?h=c9c32654c8&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1&controls=0"
-      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-      referrerpolicy="strict-origin-when-cross-origin"
-      title="Manmade Media Studio Glambot Demo">
-    </iframe>
+    <video autoplay muted loop playsinline>
+      <source src="https://raw.githubusercontent.com/joeportnoy/glambot/main/Manmade%20Media%20Studio%20Glambot%20Demo.mp4" type="video/mp4">
+    </video>
   </div>
 
   <div class="hero-overlay"></div>
